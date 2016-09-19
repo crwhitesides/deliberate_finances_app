@@ -1,0 +1,2 @@
+class PurchaseTagsController < ApplicationController
+end
