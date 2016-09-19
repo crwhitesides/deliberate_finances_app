@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 20160919221140) do
   end
 
   create_table "payments", force: :cascade do |t|
-    t.integer  "cost"
+    t.decimal  "cost"
     t.string   "store"
     t.integer  "purchase_id"
     t.datetime "created_at",  null: false
@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 20160919221140) do
   end
 
   create_table "plans", force: :cascade do |t|
-    t.integer  "income"
+    t.decimal  "income"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(version: 20160919221140) do
 
   create_table "purchases", force: :cascade do |t|
     t.string   "item"
-    t.integer  "cost"
+    t.decimal  "cost"
     t.text     "note"
     t.integer  "plan_id"
     t.datetime "created_at", null: false

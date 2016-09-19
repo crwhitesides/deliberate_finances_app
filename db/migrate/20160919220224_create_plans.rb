@@ -1,7 +1,7 @@
 class CreatePlans < ActiveRecord::Migration
   def change
     create_table :plans do |t|
-      t.integer :income
+      t.decimal :income
 
       t.timestamps null: false
     end
