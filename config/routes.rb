@@ -3,14 +3,15 @@ Rails.application.routes.draw do
   get '/help', to: 'static_pages#help'
   get '/about', to: 'static_pages#about'
   get '/contact', to: 'static_pages#contact'
+  get '/signup', to: 'users#new'
 
-  resources :comments
-  resources :payments
-  resources :purchase_tags
-  resources :tags
-  resources :purchases
-  resources :user_plans
-  resources :plans
+  # resources :comments
+  # resources :payments
+  # resources :purchase_tags
+  # resources :tags
+  # resources :purchases
+  # resources :user_plans
+  # resources :plans
   resources :users
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
