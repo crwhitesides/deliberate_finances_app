@@ -14,6 +14,10 @@ class SessionsController < ApplicationController
     end
   end
 
+  def twitter_login
+    render text: request.env['omniauth.auth'].to_yaml
+  end
+
   def destroy
     log_out
     redirect_to root_path
