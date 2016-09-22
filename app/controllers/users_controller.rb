@@ -10,7 +10,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    @user.provider, @user.uid = "not_applicable", "not_applicable"
+    @user.provider, @user.uid = "not_applicable", "not_applicable" # Tweak to make up for the lack of :provider and :uid attributes that can't have a null value
     if @user.save
       log_in @user
       flash[:success] = "Welcome, #{@user.name}!"

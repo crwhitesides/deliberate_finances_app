@@ -2,5 +2,7 @@
   <h1>Welcome to the Deliberate Finances App</h1>
   <h2>This is your money-managing home page. Woot!</h2>
 
-  <%= link_to "Sign up", signup_path, class: "btn btn-lg btn-primary" %>
+  <% if !logged_in? %>
+    <%= link_to "Sign up", signup_path, class: "btn btn-lg btn-primary" %>
+  <% end %>
 </div>
