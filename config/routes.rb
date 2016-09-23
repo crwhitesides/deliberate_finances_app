@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  get 'plans/index'
+
+  get 'plans/show'
+
   root 'static_pages#home'
   get '/about', to: 'static_pages#about'
   get '/signup', to: 'users#new'
