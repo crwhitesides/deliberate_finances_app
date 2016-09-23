@@ -11,11 +11,18 @@ module SessionsHelper
     @user = (User.find_by(id: session[:user_id]) || User.new)
   end
 
-  def logged_in?
-    current_user.id != nil
+  def current_user?(user)
+    user == current_user
   end
 
-  def require_logged_in
-    return redirect_to login_path unless logged_in?
+  # Redirects to stored location (or to the default).
+  def redirect_back_or(default)
+    redirect_to(session[:forwarding_url] || default)
+    session.delete(:forwarding_url)
+  end
+
+  # Stores the URL trying to be accessed.
+  def store_location
+    session[:forwarding_url] = request.original_url if request.get?
   end
 end

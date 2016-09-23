@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
-  before_action :require_logged_in, only: [:show]
+  before_action :require_logged_in, only: [:show, :edit, :update]
+  before_action :correct_user, only: [:show, :edit, :update]
 
   def show
   end
@@ -32,10 +32,20 @@ class UsersController < ApplicationController
     end
   end
 
+
   private
 
-  def set_user
+  def require_logged_in
+    unless logged_in?
+      store_location
+      flash[:danger] = "Please log in."
+      redirect_to login_path
+    end
+  end
+
+  def correct_user
     @user = User.find(params[:id])
+    redirect_to root_path unless current_user?(@user)
   end
 
   def user_params

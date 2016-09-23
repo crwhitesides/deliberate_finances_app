@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
       log_in user
       @user = user
       flash[:success] = "Welcome, #{@user.name}!"
-      redirect_to @user
+      redirect_back_or @user
     else
       flash.now[:danger] = "Hmmmm, it seems your email and password don't match"
       render 'new'
