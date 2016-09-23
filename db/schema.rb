@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160920221534) do
+ActiveRecord::Schema.define(version: 20160923210642) do
 
   create_table "comments", force: :cascade do |t|
     t.text     "content"
@@ -60,7 +60,6 @@ ActiveRecord::Schema.define(version: 20160920221534) do
   create_table "user_plans", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "plan_id"
-    t.string   "permission"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
