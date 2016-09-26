@@ -19,4 +19,30 @@ class User < ActiveRecord::Base
     user.save!
     user
   end
+
+  def create_initial_batch_of_plans
+    12.times { |i| self.plans.create(date: Date.today + i.month) }
+  end
+
+  def most_current_twelve_months_of_plans
+    if Date.today.month != self.plans.last(12).first.date.month
+      last_month = self.plans.last(12).last.date
+      self.plans.create(date: (last_month + 1.month))
+      self.plans.last(12)
+    else
+      self.plans.last(12)
+    end
+  end
+
+  def past_plans
+    self.plans.map do |plan|
+      if plan.date < current_plan.date
+        plan
+      end
+    end.compact
+  end
+
+  def current_plan
+      most_current_twelve_months_of_plans.first
+  end
 end
