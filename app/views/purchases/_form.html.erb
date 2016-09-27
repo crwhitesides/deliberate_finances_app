@@ -1,0 +1,21 @@
+<%= form_for @purchase, url: yield(:path) do |f| %>
+  <%= render 'shared/error_messages' %>
+
+  <div class="form-group">
+    <%= f.label :item %>
+    <%= f.text_field :item, placeholder: " Stinky cheese", class: 'form-control' %>
+  </div>
+
+  <%= f.label :price %>
+  <div class="input-group">
+    <div class="input-group-addon">$</div>
+    <%= f.text_field :price, placeholder: "6.78", class: 'form-control' %>
+  </div><br>
+
+  <div class="form-group">
+    <%= f.label :note %>
+    <%= f.text_area :note, class: "form-control" %>
+  </div>
+
+  <%= f.submit yield(:button_text), class: "btn btn-primary" %>
+<% end %>
