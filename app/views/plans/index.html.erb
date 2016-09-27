@@ -1,4 +1,15 @@
 <h1>Plans#index</h1>
-<% @plans.each do |plan| %>
-  <%= date_of plan %>
+<ul>
+  <% @plans.each do |plan| %>
+    <li><%= date_of plan %></li>
+  <% end %>
+</ul>
+
+<% if !@past_plans.empty? %>
+  <h1>Past plans</h1>
+  <ul>
+    <% @past_plans.each do |plan| %>
+      <li><%= date_of plan %></li>
+    <% end %>
+  </ul>
 <% end %>

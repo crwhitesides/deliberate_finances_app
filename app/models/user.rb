@@ -25,7 +25,7 @@ class User < ActiveRecord::Base
   end
 
   def current_twelve_months_of_plans
-    if Date.today.month != self.plans.last(12).first.date.month
+    if Date.today.month > self.plans.last(12).first.date.month
       last_month = self.plans.last(12).last.date
       self.plans.create(date: (last_month + 1.month))
       self.plans.last(12)
