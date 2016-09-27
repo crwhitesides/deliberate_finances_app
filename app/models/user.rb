@@ -43,6 +43,6 @@ class User < ActiveRecord::Base
   end
 
   def current_plan
-      current_twelve_months_of_plans.first
+    current_twelve_months_of_plans.first
   end
 end

@@ -1,7 +1,7 @@
 <h1>Plans#index</h1>
 <ul>
   <% @plans.each do |plan| %>
-    <li><%= date_of plan %></li>
+    <li><%= link_to date_of(plan), plan %></li>
   <% end %>
 </ul>
 
@@ -9,7 +9,7 @@
   <h1>Past plans</h1>
   <ul>
     <% @past_plans.each do |plan| %>
-      <li><%= date_of plan %></li>
+      <li><%= link_to date_of(plan), plan %></li>
     <% end %>
   </ul>
 <% end %>
