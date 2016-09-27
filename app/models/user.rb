@@ -20,11 +20,11 @@ class User < ActiveRecord::Base
     user
   end
 
-  def create_initial_batch_of_plans
+  def create_initial_set_of_plans
     12.times { |i| self.plans.create(date: Date.today + i.month) }
   end
 
-  def most_current_twelve_months_of_plans
+  def current_twelve_months_of_plans
     if Date.today.month != self.plans.last(12).first.date.month
       last_month = self.plans.last(12).last.date
       self.plans.create(date: (last_month + 1.month))
@@ -43,6 +43,6 @@ class User < ActiveRecord::Base
   end
 
   def current_plan
-      most_current_twelve_months_of_plans.first
+      current_twelve_months_of_plans.first
   end
 end
