@@ -1,4 +1,4 @@
 <h1>Plans#index</h1>
 <% @plans.each do |plan| %>
-  <%= plan.date.strftime("%B '%y'") %>
+  <%= date_of plan %>
 <% end %>
