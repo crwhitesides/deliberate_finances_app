@@ -12,6 +12,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     @user.provider, @user.uid = "not_applicable", "not_applicable" # Tweak to make up for the lack of :provider and :uid attributes that can't have a null value
     if @user.save
+      @user.create_initial_batch_of_plans
       log_in @user
       flash[:success] = "Welcome, #{@user.name}!"
       redirect_to @user
