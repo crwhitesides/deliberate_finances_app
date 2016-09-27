@@ -1,2 +1,27 @@
-<h1>Purchases#edit</h1>
-<p>Find me in app/views/purchases/edit.html.erb</p>
+<h1>Edit item</h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for @purchase do |f| %>
+      <%= render 'shared/error_messages' %>
+
+      <div class="form-group">
+        <%= f.label :item %>
+        <%= f.text_field :item, placeholder: " Stinky cheese", class: 'form-control' %>
+      </div>
+
+      <%= f.label :cost %>
+      <div class="input-group">
+        <div class="input-group-addon">$</div>
+        <%= f.text_field :cost, placeholder: "6.78", class: 'form-control' %>
+      </div><br>
+
+      <div class="form-group">
+        <%= f.label :note %>
+        <%= f.text_area :note, class: "form-control" %>
+      </div>
+
+      <%= f.submit "Add item to plan", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>

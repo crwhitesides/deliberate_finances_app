@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  
+
   root 'static_pages#home'
   get '/about', to: 'static_pages#about'
   get '/signup', to: 'users#new'
@@ -10,7 +10,10 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy'
 
   resources :users
-  resources :plans
-  resources :purchases
+  resources :plans, only: [:index, :show] do
+    resources :purchases, only: [:show, :new, :create, :edit, :update]
+  end
+
+  resources :purchases, only: [:index]
 
 end
