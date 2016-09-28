@@ -50,22 +50,12 @@ h4 {
   color: #777;
   letter-spacing: -1px;
   margin-bottom: 30px;
-  margin-right: 10px;
-  display: inline-block;
 }
 
 p {
   font-size: 1.1em;
   line-height: 1.7em;
 }
-
-small {
-  text-align: center;
-  text-decoration: underline;
-  display: inline-block;
-
-}
-
 
 /* header */
 
@@ -136,4 +126,23 @@ input, textarea, select, .uneditable-input {
 
 input {
   height: auto !important;
+}
+
+/* plan income */
+
+.income small {
+  text-align: center;
+  text-decoration: underline;
+  display: inline-block;
+}
+
+.income h4 {
+  font-size: 1.2em;
+  text-align: center;
+  font-weight: normal;
+  color: #777;
+  letter-spacing: -1px;
+  margin-bottom: 30px;
+  margin-right: 10px;
+  display: inline-block;
 }

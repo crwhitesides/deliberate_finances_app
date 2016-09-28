@@ -1,6 +1,10 @@
 <header class="navbar navbar-fixed-top">
   <div class="container">
-    <%= link_to "Deliberate Finances App", root_path, id: "logo" %>
+    <% if !logged_in? %>
+      <%= link_to "Deliberate Finances App", root_path, id: "logo" %>
+    <% else %>
+      <%= link_to "Deliberate Finances App", current_user.current_plan, id: "logo" %>
+    <% end %>
     <nav>
       <ul class="nav navbar-nav navbar-right">
         <% if logged_in? %>

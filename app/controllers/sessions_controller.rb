@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
       log_in user
       @user = user
       flash[:success] = "Welcome, #{@user.name}!"
-      redirect_back_or @user
+      redirect_back_or @user.current_plan
     else
       flash.now[:danger] = "Hmmmm, it seems your email and password don't match"
       render 'new'
@@ -23,7 +23,7 @@ class SessionsController < ApplicationController
     rescue
       flash[:warning] = "There was an error while trying to authenticate you..."
     end
-    redirect_to @user
+    redirect_to @user.current_plan
   end
 
   def destroy

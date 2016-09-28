@@ -15,7 +15,7 @@ class UsersController < ApplicationController
       @user.create_initial_set_of_plans
       log_in @user
       flash[:success] = "Welcome, #{@user.name}!"
-      redirect_to @user
+      redirect_to @user.current_plan
     else
       render 'new'
     end
@@ -27,7 +27,7 @@ class UsersController < ApplicationController
   def update
     if @user.update(user_params)
       flash[:success] = "Your account was successfully updated!"
-      redirect_to @user
+      redirect_to @user.current_plan
     else
       render 'edit'
     end
