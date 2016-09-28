@@ -14,7 +14,7 @@
 
   <div class="form-group">
     <%= f.label :note %>
-    <%= f.text_area :note, class: "form-control" %>
+    <%= f.text_area :note, placeholder: "Let's try to buy this only once per month because, you know, it stinks.", class: "form-control" %>
   </div>
 
   <%= f.submit yield(:button_text), class: "btn btn-primary" %>

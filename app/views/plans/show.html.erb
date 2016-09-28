@@ -1,11 +1,11 @@
 <h1><%= date_of @plan %></h1>
-<div class="center">
+<div class="center add">
   <%= link_to "Add item to plan", new_plan_purchase_path(@plan), class: "btn btn-primary" %>
-</div>
+</div><br>
 
-
-<ul>
-  <% @plan.purchases.each do |purchase| %>
-    <li><%= purchase.item %></li>
-  <% end %>
-</ul>
+<h2>Planned purchases</h2>
+<% @plan.purchases.each do |purchase| %>
+  <article class="center">
+    <h4><%= number_to_currency(purchase.price.to_f) %> | <%= link_to purchase.item, plan_purchase_path(@plan, purchase) %></h4>
+  </article>
+<% end %>
