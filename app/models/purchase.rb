@@ -5,4 +5,7 @@ class Purchase < ActiveRecord::Base
 
   has_many :purchase_tags
   has_many :tags, through: :purchase_tags
+
+  validates :item, presence: true, length: { maximum: 50 }
+  validates :price, presence: true
 end
