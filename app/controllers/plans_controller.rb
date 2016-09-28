@@ -7,4 +7,17 @@ class PlansController < ApplicationController
   def show
     @plan = Plan.find(params[:id])
   end
+
+  def edit
+    @plan = Plan.find(params[:id])
+  end
+
+  def update
+  end
+
+  private
+
+  def plan_params
+    params.require(:plan).permit(:income)
+  end
 end
