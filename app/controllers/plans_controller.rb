@@ -13,6 +13,13 @@ class PlansController < ApplicationController
   end
 
   def update
+    @plan = Plan.find(params[:id])
+    if @plan.update(plan_params)
+      flash[:success] = "Your income was successfully updated!"
+      redirect_to @plan
+    else
+      render 'edit'
+    end
   end
 
   private
