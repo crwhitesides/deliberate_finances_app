@@ -7,7 +7,7 @@ class PurchasesController < ApplicationController
       @plan = Plan.find_by(id: params[:plan_id])
       @purchase = @plan.purchases.find_by(id: params[:id])
       if @purchase.nil?
-        flash[:warning] = "Purchase item not found."
+        flash[:warning] = "Purchase not found."
         redirect_to current_user.current_plan
       end
     else
@@ -20,7 +20,6 @@ class PurchasesController < ApplicationController
       flash[:warning] = "Plan not found."
       redirect_to current_user.current_plan
     else
-      plan = Plan.find_by(id: params[:plan_id])
       @purchase = Purchase.new(plan_id: params[:plan_id])
     end
   end
@@ -28,7 +27,7 @@ class PurchasesController < ApplicationController
   def create
     @purchase = Purchase.new(purchase_params)
     if @purchase.save
-      flash[:success] = "Planned purchase added successfully."
+      flash[:success] = "Purchase added successfully."
       redirect_to current_user.current_plan
     else
       render 'new'
@@ -44,7 +43,7 @@ class PurchasesController < ApplicationController
       else
         @purchase = plan.purchases.find_by(id: params[:id])
         if @purchase.nil?
-          flash[:warning] = "Purchase item not found."
+          flash[:warning] = "Purchase not found."
           redirect_to current_user.current_plan
         end
       end
@@ -56,7 +55,7 @@ class PurchasesController < ApplicationController
   def update
     @purchase = Purchase.find(params[:id])
     if @purchase.update(purchase_params)
-      flash[:success] = "Planned purchase updated successfully."
+      flash[:success] = "Purchase updated successfully."
       redirect_to current_user.current_plan
     else
       render 'edit'
@@ -64,6 +63,10 @@ class PurchasesController < ApplicationController
   end
 
   def destroy
+    @purchase = Purchase.find(params[:id])
+    @purchase.destroy
+    flash[:success] = "Purchase deleted."
+    redirect_to current_user.current_plan
   end
 
   private
