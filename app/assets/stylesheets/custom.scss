@@ -128,20 +128,16 @@ input {
   height: auto !important;
 }
 
-/* plan income */
+/* plan and purchases header */
 
-.income small {
+.header small {
   text-align: center;
   text-decoration: underline;
   display: inline-block;
 }
 
-.income h4 {
-  font-size: 1.2em;
-  text-align: center;
-  font-weight: normal;
-  color: #777;
-  letter-spacing: -1px;
+.header h4,
+.header h2 {
   margin-bottom: 30px;
   margin-right: 10px;
   display: inline-block;
