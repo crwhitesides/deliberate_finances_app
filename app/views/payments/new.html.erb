@@ -1,2 +1,22 @@
 <h1>Payments#new</h1>
-<p>Find me in app/views/payments/new.html.erb</p>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for @payment, url: purchase_payments_path do |f| %>
+      <%= f.hidden_field :purchase_id %>
+
+      <%= f.label :amount %>
+      <div class="input-group">
+        <div class="input-group-addon">$</div>
+        <%= f.text_field :amount, placeholder: "6.78", class: 'form-control' %>
+      </div><br>
+
+      <div class="form-group">
+        <%= f.label :store %>
+        <%= f.text_field :store, placeholder: "e.g. Amazon", class: "form-control" %>
+      </div>
+
+      <%= f.submit "Add payment", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
