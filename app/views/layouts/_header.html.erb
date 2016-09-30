@@ -10,7 +10,7 @@
         <% if logged_in? %>
           <li><%= link_to "This month", current_user.current_plan %></li>
           <li><%= link_to "Plans", plans_path %></li>
-          <li><%= link_to "Me", edit_user_path(current_user) %></li>
+          <li><%= link_to "My account", edit_user_path(current_user) %></li>
           <li><%= link_to "Log out", logout_path, method: "delete" %></li>
         <% else %>
           <li><%= link_to "Log in", login_path %></li>

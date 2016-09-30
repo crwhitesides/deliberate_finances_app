@@ -1,6 +1,4 @@
 class PurchasesController < ApplicationController
-  def index
-  end
 
   def show
     if params[:plan_id]
@@ -72,6 +70,6 @@ class PurchasesController < ApplicationController
   private
 
   def purchase_params
-    params.require(:purchase).permit(:item, :price, :note, :plan_id)
+    params.require(:purchase).permit(:item, :price, :note, :plan_id, tag_ids:[], tags_attributes: [:name])
   end
 end

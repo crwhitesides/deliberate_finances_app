@@ -1,4 +1,9 @@
 <div class="header center">
   <h2>$(some amount) left for <%= @purchase.item %></h2>
   <small><%= link_to "edit", edit_plan_purchase_path %></small>
+  <p>Note: <%= @purchase.note %></p>
+</div><br>
+
+<div class="center">
+  <%= link_to "Make a payment", new_payment_path, class: 'btn btn-primary' %>
 </div>
