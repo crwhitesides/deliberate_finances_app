@@ -8,7 +8,12 @@
   <%= link_to "Add purchase to plan", new_plan_purchase_path(@plan), class: "btn btn-primary" %>
 </div><br>
 
-<h2>Planned purchases</h2>
-<% @plan.purchases.each do |purchase| %>
-  <h4><%= number_to_currency(purchase.price.to_f) %> | <%= link_to purchase.item, plan_purchase_path(@plan, purchase) %></h4>
-<% end %>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <% if @plan.purchases.any? %>
+      <ol class="payments">
+        <%= render @purchases %>
+      </ol>
+    <% end %>
+  </div>
+</div>

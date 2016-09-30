@@ -4,10 +4,12 @@ class PurchasesController < ApplicationController
     if params[:plan_id]
       @plan = Plan.find_by(id: params[:plan_id])
       @purchase = @plan.purchases.find_by(id: params[:id])
-      @payments = @purchase.payments
+
       if @purchase.nil?
         flash[:warning] = "Purchase not found."
         redirect_to current_user.current_plan
+      else
+        @payments = @purchase.payments
       end
     else
       @purchase = Purchase.find(params[:id])

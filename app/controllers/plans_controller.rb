@@ -6,6 +6,7 @@ class PlansController < ApplicationController
 
   def show
     @plan = Plan.find(params[:id])
+    @purchases = @plan.purchases
   end
 
   def edit
