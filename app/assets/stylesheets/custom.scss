@@ -130,17 +130,15 @@ input {
 
 /* plan and purchases header */
 
-.header small,
-.payment small {
+.header small {
   text-align: center;
   text-decoration: underline;
   display: inline-block;
 }
 
 .header h4,
-.header h2,
-.payment h4 {
-  margin-bottom: 30px;
+.header h2 {
+  margin-bottom: 10px;
   margin-right: 10px;
   display: inline-block;
 }
@@ -173,4 +171,11 @@ input {
     display: block;
     margin-left: 60px;
   }
+}
+
+
+/* buttons */
+
+.button {
+  margin-top: 30px;
 }

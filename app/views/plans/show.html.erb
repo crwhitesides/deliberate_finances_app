@@ -1,10 +1,10 @@
 <div class="header center">
   <h1><%= date_of @plan %></h1>
-  <h4>Income still available: <strong><%= number_to_currency(@plan.income) %></strong></h4>
+  <h4>Income still available: <strong><%= number_to_currency(@plan.income_available) %></strong></h4>
   <small><%= link_to "Edit income", edit_plan_path %></small>
 </div>
 
-<div class="center">
+<div class="center button">
   <%= link_to "Add purchase to plan", new_plan_purchase_path(@plan), class: "btn btn-primary" %>
 </div><br>
 

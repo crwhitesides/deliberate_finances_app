@@ -17,4 +17,9 @@ class Purchase < ActiveRecord::Base
       self.tags << tag unless tag == ""
     end
   end
+
+  def money_available
+     total_payments = Payment.where(purchase_id: self.id).sum(:amount)
+     self.price - total_payments
+  end
 end
