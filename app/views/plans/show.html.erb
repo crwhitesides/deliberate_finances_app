@@ -10,7 +10,5 @@
 
 <h2>Planned purchases</h2>
 <% @plan.purchases.each do |purchase| %>
-  <article class="center">
-    <h4><%= number_to_currency(purchase.price.to_f) %> | <%= link_to purchase.item, plan_purchase_path(@plan, purchase) %></h4>
-  </article>
+  <h4><%= number_to_currency(purchase.price.to_f) %> | <%= link_to purchase.item, plan_purchase_path(@plan, purchase) %></h4>
 <% end %>

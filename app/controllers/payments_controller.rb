@@ -4,7 +4,7 @@ class PaymentsController < ApplicationController
       flash[:warning] = "Purchase not found."
       redirect_to current_user.current_plan
     else
-      @payment = Payment.new(purchase_id: params[:purchase_id])
+      @payment = Payment.new(purchase_id: params[:purchase_id], user_id: session[:user_id])
     end
   end
 
@@ -21,11 +21,18 @@ class PaymentsController < ApplicationController
   end
 
   def destroy
+    payment = Payment.find(params[:id])
+    purchase = payment.purchase
+    plan = purchase.plan
+
+    payment.destroy
+    flash[:success] = "Purchase deleted."
+    redirect_to plan_purchase_path(plan, purchase)
   end
 
   private
 
   def payment_params
-    params.require(:payment).permit(:amount, :store, :purchase_id)
+    params.require(:payment).permit(:amount, :store, :purchase_id, :user_id)
   end
 end

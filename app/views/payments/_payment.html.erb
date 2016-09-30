@@ -1,0 +1,9 @@
+<li id="payment-<%= payment.id %>">
+  <span class="payment_content"><h3><strong><%= number_to_currency(payment.amount) %></strong> spent at <%= payment.store %></h3></span>
+  <span class="destroy_link">
+    <%= link_to raw('<i class="glyphicon glyphicon-trash"></i>'), payment, method: :delete %>
+  </span>
+  <span class="timestamp">
+    Posted by <%= payment.user.name %> on <%= payment.created_at.strftime("%A, %b %e, %Y") %>
+  </span>
+</li>
