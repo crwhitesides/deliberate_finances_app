@@ -8,7 +8,7 @@ class Plan < ActiveRecord::Base
     self.income - total_purchases
   end
 
-  def purchases_with_a_budget
+  def purchases_pending
     self.purchases.map do |purchase|
       if purchase.money_available > 0
         purchase

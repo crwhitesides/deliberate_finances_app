@@ -10,10 +10,10 @@
 
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
-    <% if @plan.purchases.any? %>
+    <% if @plan.purchases_pending.any? %>
       <h3>Your planned purchases include...</h3>
       <ol class="items">
-        <%= render @purchases %>
+        <%= render @purchases_pending %>
       </ol>
     <% end %>
 
