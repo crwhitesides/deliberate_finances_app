@@ -1,6 +1,7 @@
 <% provide(:title, "Edit account") %>
 <% provide(:button_text, "Save changes") %>
-<% provide(:path, edit_user_path) %>
+<% provide(:path, user_path(@user)) %>
+<% provide(:verb, :patch) %>
 
 <h1>Your account</h1>
 <div class="row">

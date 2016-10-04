@@ -1,5 +1,5 @@
 <li id="purchase-<%= purchase.id %>">
-  <% if purchase.money_available <= 0 || purchase.payment_completed? %>
+  <% if purchase.paid_for? %>
     <span class="content"><h3><strong><%= number_to_currency(purchase.total_payments) %></strong> spent on <%= link_to purchase.item, plan_purchase_path(@plan, purchase) %></h3></span>
   <% else %>
     <span class="content"><h3><strong><%= number_to_currency(purchase.money_available) %></strong> for <%= link_to purchase.item, plan_purchase_path(@plan, purchase) %></h3></span>

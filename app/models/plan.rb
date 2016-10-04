@@ -15,14 +15,14 @@ class Plan < ActiveRecord::Base
   def purchases_pending
     self.purchases.map do |purchase|
       if purchase.money_available > 0
-        purchase unless purchase.payment_completed?
+        purchase unless purchase.paid_for? # In other words, a payment's purchase_complete attribute is set to true.
       end
     end.compact
   end
 
   def purchases_paid_for
     self.purchases.map do |purchase|
-      if purchase.money_available <= 0 || purchase.payment_completed?
+      if purchase.paid_for?
         purchase
       end
     end.compact

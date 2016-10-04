@@ -4,6 +4,6 @@
     <%= link_to raw('<i class="glyphicon glyphicon-trash"></i>'), payment, method: :delete %>
   </span>
   <span class="timestamp">
-    Posted by <%= payment.user.name %> on <%= payment.created_at.strftime("%A, %b %e, %Y") %>
+    Posted by <%= payment.user.name %> on <%= date_posted(payment) %>
   </span>
 </li>

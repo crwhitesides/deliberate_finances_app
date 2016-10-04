@@ -26,7 +26,7 @@ class Purchase < ActiveRecord::Base
     self.price - total_payments
   end
 
-  def payment_completed?
-    self.payments.where(purchase_complete: true).count > 0
+  def paid_for?
+    self.money_available <= 0 || self.payments.where(purchase_complete: true).count > 0
   end
 end
