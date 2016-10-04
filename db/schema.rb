@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160930190433) do
+ActiveRecord::Schema.define(version: 20161004195059) do
 
   create_table "comments", force: :cascade do |t|
     t.text     "content"
@@ -25,9 +25,10 @@ ActiveRecord::Schema.define(version: 20160930190433) do
     t.decimal  "amount"
     t.string   "store"
     t.integer  "purchase_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
     t.integer  "user_id"
+    t.boolean  "purchase_complete", default: false
   end
 
   create_table "plans", force: :cascade do |t|

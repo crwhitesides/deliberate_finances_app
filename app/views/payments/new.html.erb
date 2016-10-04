@@ -20,6 +20,12 @@
         <%= f.text_field :store, placeholder: "e.g. Amazon", class: "form-control" %>
       </div>
 
+      <div class="checkbox">
+        <label>
+          <%= f.check_box :purchase_complete %> Finished paying for this
+        </label>
+      </div>
+
       <%= f.submit "Add payment", class: "btn btn-primary" %>
     <% end %>
   </div>
