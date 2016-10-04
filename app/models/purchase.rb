@@ -18,8 +18,15 @@ class Purchase < ActiveRecord::Base
     end
   end
 
+  def total_payments
+    Payment.where(purchase_id: self.id).sum(:amount)
+  end
+
   def money_available
-     total_payments = Payment.where(purchase_id: self.id).sum(:amount)
-     self.price - total_payments
+    self.price - total_payments
+  end
+
+  def payment_completed?
+    self.payments.where(purchase_complete: true).count > 0
   end
 end

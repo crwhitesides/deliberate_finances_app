@@ -12,9 +12,12 @@ class PaymentsController < ApplicationController
     @payment = Payment.new(payment_params)
     purchase = Purchase.find_by(id: params[:purchase_id])
     plan = purchase.plan
-    if @payment.save
+    if @payment.save && !@payment.purchase_complete
       flash[:success] = "Payment added successfully."
       redirect_to plan_purchase_path(plan, purchase)
+    elsif @payment.save && @payment.purchase_complete
+      flash[:success] = "Payment added successfully."
+      redirect_to current_user.current_plan
     else
       render 'new'
     end
