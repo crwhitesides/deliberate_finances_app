@@ -1,5 +1,5 @@
 # Deliberate Finances App
-An application to help you manage your money more deliberately. Why? Well, because at some point in your life you've asked yourself: "Where did all the money go?" 
+An application to help you manage your money more deliberately. Why? Well, because at some point in your life you've asked yourself: "Where did all the money go?"
 
 ## Usage
 
