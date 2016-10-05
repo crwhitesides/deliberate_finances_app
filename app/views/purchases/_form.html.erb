@@ -20,10 +20,12 @@
   </div>
 
   <div>
-    <%= f.label "Select a tag..." %><br>
-    <%= f.collection_check_boxes :tag_ids, Tag.all, :id, :name do |b| %>
-      <%= b.label class: "checkbox-inline" do %>
-        <%= b.check_box + b.text unless b.text.empty?%>
+    <% if Tag.any? %>
+      <%= f.label "Select a tag..." %><br>
+      <%= f.collection_check_boxes :tag_ids, Tag.all, :id, :name do |b| %>
+        <%= b.label class: "checkbox-inline" do %>
+          <%= b.check_box + b.text unless b.text.empty?%>
+        <% end %>
       <% end %>
     <% end %>
   </div><br>
