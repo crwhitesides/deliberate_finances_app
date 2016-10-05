@@ -1,16 +1,16 @@
 <%= form_for @user, url: yield(:path), method: yield(:verb) do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
 
-  <%= f.label :name %>
+  <%= f.label :name, "Your name" %>
   <%= f.text_field :name, placeholder: " John Doe", class: 'form-control' %>
 
-  <%= f.label :email %>
+  <%= f.label :email, "Your email" %>
   <%= f.text_field :email, placeholder: " john.doe@email.com", class: 'form-control' %>
 
-  <%= f.label :password %>
+  <%= f.label :password, "Create a password" %>
   <%= f.password_field :password, class: 'form-control' %>
 
-  <%= f.label :password_confirmation, "Confirmation" %>
+  <%= f.label :password_confirmation, "Confirm your password" %>
   <%= f.password_field :password_confirmation, class: 'form-control' %>
 
   <%= f.submit  yield(:button_text), class: "btn btn-primary" %>

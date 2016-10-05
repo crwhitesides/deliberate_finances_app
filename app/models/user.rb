@@ -10,14 +10,21 @@ class User < ActiveRecord::Base
   has_secure_password
   validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
 
-  def self.from_omniauth(auth_hash)
-    user = find_or_create_by(uid: auth_hash['uid'], provider: auth_hash['provider'])
-    user.name = auth_hash['info']['name']
-    user.email = "#{auth_hash['info']['nickname']}@test.com" # Lines 17-19 are necessary because my validations require an email and password to log in
-    user.password = '7LZnDFxGoUdbk)TT=JTmTVFQnPm{3A'
-    user.password_confirmation = '7LZnDFxGoUdbk)TT=JTmTVFQnPm{3A'
-    user.save!
-    user
+  def self.from_omniauth(auth)
+    user = find_or_create_by(uid: auth['uid'], provider: auth['provider'])
+    if user.new_record?
+      user.name = auth.info.name
+      user.email = auth.info.email
+      user.password = '7LZnDFxGoUdbk)TT=JTmTVFQnPm{3A'
+      user.password_confirmation = '7LZnDFxGoUdbk)TT=JTmTVFQnPm{3A'
+      user.oauth_token = auth.credentials.token
+      user.oauth_expires_at = Time.at(auth.credentials.expires_at)
+      user.save!
+      user.create_initial_set_of_plans
+      user
+    else
+      user
+    end
   end
 
   def create_initial_set_of_plans

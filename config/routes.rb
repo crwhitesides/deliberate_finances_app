@@ -4,7 +4,8 @@ Rails.application.routes.draw do
   get '/about', to: 'static_pages#about'
   get '/signup', to: 'users#new'
   post '/signup', to: 'users#create'
-  get '/auth/:provider/callback', to: 'sessions#twitter_login'
+  get 'auth/:provider/callback', to: 'sessions#google_login'
+  get 'auth/failure', to: redirect('/')
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'

@@ -15,15 +15,15 @@ class SessionsController < ApplicationController
     end
   end
 
-  def twitter_login
+  def google_login
     begin
-      @user = User.from_omniauth(request.env['omniauth.auth'])
-      session[:user_id] = @user.id
-      flash[:success] = "Welcome, #{@user.name}!"
+      user = User.from_omniauth(request.env['omniauth.auth'])
+      session[:user_id] = user.id
+      flash[:success] = "Welcome, #{user.name}!"
     rescue
       flash[:warning] = "There was an error while trying to authenticate you..."
     end
-    redirect_to @user.current_plan
+    redirect_to user.current_plan
   end
 
   def destroy
