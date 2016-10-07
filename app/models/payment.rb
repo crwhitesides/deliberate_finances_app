@@ -6,7 +6,7 @@ class Payment < ActiveRecord::Base
   validates :amount, presence: true
   validates :store, presence: true, length: { maximum: 50 }
 
-  def self.filter_payments(userid)
-    where('user_id = ?', userid)
+  def self.filter_payments
+    where('amount > ?', 50)
   end
 end
