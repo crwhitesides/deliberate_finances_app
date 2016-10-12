@@ -15,8 +15,8 @@ class User < ActiveRecord::Base
     if user.new_record?
       user.name = auth.info.name
       user.email = auth.info.email
-      user.password = '7LZnDFxGoUdbk)TT=JTmTVFQnPm{3A'
-      user.password_confirmation = '7LZnDFxGoUdbk)TT=JTmTVFQnPm{3A'
+      user.password = SecureRandom.hex(20)
+      user.password_confirmation = user.password
       user.oauth_token = auth.credentials.token
       user.oauth_expires_at = Time.at(auth.credentials.expires_at)
       user.save!
