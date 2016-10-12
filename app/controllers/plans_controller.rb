@@ -1,21 +1,20 @@
 class PlansController < ApplicationController
+  before_action :set_plan, only: [:show, :edit, :update]
+
   def index
     @plans = @user.current_twelve_months_of_plans
     @past_plans = @user.past_plans
   end
 
   def show
-    @plan = Plan.find(params[:id])
     @purchases_pending = @plan.purchases_pending
     @purchases_paid = @plan.purchases_paid_for
   end
 
   def edit
-    @plan = Plan.find(params[:id])
   end
 
   def update
-    @plan = Plan.find(params[:id])
     if @plan.update(plan_params)
       flash[:success] = "Your income was successfully updated!"
       redirect_to @plan
@@ -25,6 +24,10 @@ class PlansController < ApplicationController
   end
 
   private
+
+  def set_plan
+    @plan = Plan.find(params[:id])
+  end
 
   def plan_params
     params.require(:plan).permit(:income)
