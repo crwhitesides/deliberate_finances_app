@@ -1,4 +1,9 @@
 class PaymentsController < ApplicationController
+  def index
+    @payments = @user.payments
+    render json: @payments
+  end
+
   def new
     if params[:purchase_id] && !Purchase.exists?(params[:purchase_id])
       flash[:warning] = "Purchase not found."
