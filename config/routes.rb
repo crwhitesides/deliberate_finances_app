@@ -20,6 +20,6 @@ Rails.application.routes.draw do
   resources :purchases, only: [:show] do
     resources :payments, only: [:show, :new, :create]
   end
-  resources :payments, only: [:destroy]
+  resources :payments, only: [:index, :destroy]
 
 end
