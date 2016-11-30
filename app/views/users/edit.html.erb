@@ -21,12 +21,10 @@ $(function () {
     $.get("/payments", function(payments) {
       var paymentsString = "";
       $.each(payments, function(i, payment) {
-        // var myDate = payment["created_at"].strftime('%m/%d/%Y');
         var dateTime = new Date(payment["created_at"]);
         var day = dateTime.getDate();
         var month = dateTime.getMonth() + 1;
         var year = dateTime.getFullYear();
-        console.log(`${day}/${month}/${year}`)
         paymentsString += `<p data-paymentid="${payment["id"]}">` + "$" + `${payment["amount"]} ` + "spent at " + `${payment["store"]} ` + "on " + `${day}/${month}/${year}` + "</p>";
       });
       $("#list").html(paymentsString);
