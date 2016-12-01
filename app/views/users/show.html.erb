@@ -9,6 +9,11 @@
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
     <h3>Your payments include the following...</h3>
+    <ul>
+      <% @user.payments.each do |payment| %>
+        <li>$<%= payment.amount %> spent at <%= payment.store%> on <%= payment.created_at.month %>/<%= payment.created_at.day %>/<%= payment.created_at.year %></li>
+      <% end %>
+    </ul>
     <div class="payments"></div>
   </div>
 </div>
