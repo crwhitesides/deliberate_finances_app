@@ -3,6 +3,11 @@
   <h4>Income still available: <strong><%= number_to_currency(@plan.income_available) %></strong></h4>
   <small><%= link_to "Edit income", edit_plan_path %></small>
 </div>
+<nav aria-label="...">
+  <ul class="pager">
+    <li><a href="#" class="js-previous" data-id="<%= @plan.id %>">Previous month</a></li>
+  </ul>
+</nav>
 
 <div class="center button">
   <%= link_to "Add purchase to plan", new_plan_purchase_path(@plan), class: "btn btn-primary" %>
