@@ -1,3 +1,4 @@
 class PurchaseSerializer < ActiveModel::Serializer
-  attributes :id
+  attributes :id, :item, :price
+  has_one :plan
 end

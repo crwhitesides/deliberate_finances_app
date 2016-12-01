@@ -9,6 +9,7 @@ class PlansController < ApplicationController
   def show
     @purchases_pending = @plan.purchases_pending
     @purchases_paid = @plan.purchases_paid_for
+    render json: @plan
   end
 
   def edit

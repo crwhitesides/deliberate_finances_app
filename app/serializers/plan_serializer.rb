@@ -1,3 +1,4 @@
 class PlanSerializer < ActiveModel::Serializer
-  attributes :id
+  attributes :id, :date, :income
+  has_many :purchases
 end
