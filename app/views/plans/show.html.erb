@@ -77,8 +77,6 @@ $(function () {
         purchasesString += `<p data-paymentid="${purchase["id"]}">` + "$" + `${purchase["price"]} ` + "for " + `${purchase["item"]} ` + "</p>";
       });
       $(".modal-body").html(purchasesString);
-      // re-set the id to current on the link
-      // $(".js-previous").attr("data-id", data["id"]);
     });
     $(".js-pager").on("click", function() {
       nextId--;
@@ -105,8 +103,6 @@ $(function () {
           purchasesString += `<p data-paymentid="${purchase["id"]}">` + "$" + `${purchase["price"]} ` + "for " + `${purchase["item"]} ` + "</p>";
         });
         $(".modal-body").html(purchasesString);
-        // re-set the id to current on the link
-        // $(".js-pager").attr("data-id", data["id"]);
       });
     });
   });
