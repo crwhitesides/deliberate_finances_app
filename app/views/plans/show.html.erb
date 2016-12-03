@@ -21,7 +21,7 @@
         ...
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary js-pager" data-id="<%= @plan.id %>" data-past-plans-ids="<%= past_plans_ids %>">Previous</button>
+        <button type="button" class="btn btn-primary js-pager" data-id="<%= @plan.id %>" data-count="<%= current_user.past_plans.count %>">Previous</button>
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>
     </div>
@@ -84,12 +84,10 @@ $(function () {
         purchasesString += `<p data-paymentid="${purchase["id"]}">` + "$" + `${purchase["price"]} ` + "for " + `${purchase["item"]} ` + "</p>";
       });
       $(".modal-body").html(purchasesString);
-      console.log(nextId, numberOfPastPlans)
     });
     $(".js-pager").on("click", function() {
       if (numberOfPastPlans === 0) {
         $("#myModal").modal('hide');
-        numberOfPastPlans = parseInt($("js-pager").attr("data-count"))
       } else {
         numberOfPastPlans--;
         nextId--;
@@ -102,7 +100,6 @@ $(function () {
           });
           $(".modal-body").html(purchasesString);
         });
-        console.log(nextId, numberOfPastPlans)
       }
     });
   });
