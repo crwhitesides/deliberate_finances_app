@@ -21,7 +21,7 @@
         ...
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary js-pager" data-id="<%= @plan.id %>" data-count="<%= current_user.past_plans.count %>">Previous</button>
+        <button type="button" class="btn btn-primary js-pager" data-id="<%= @plan.id %>" data-past-plans="<%= ids_of_past_plans(@plan.id) %>">Previous</button>
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>
     </div>
