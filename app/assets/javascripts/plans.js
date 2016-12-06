@@ -1,5 +1,9 @@
 $(function() {
 
+  $('#myModal').on('hidden.bs.modal', function () {
+    location.reload();
+  });
+
   function prettifyMonth(date) {
     var rawDate = new Date(date);
     var month = [];
@@ -36,6 +40,7 @@ $(function() {
     var nextId = parseInt($(".js-previous").attr("data-id")) - 1;
     var numberOfPastPlans = JSON.parse($(".js-pager").attr("data-past-plans")).length - 1;
     previousPlanInfo(nextId);
+    console.log(nextId, numberOfPastPlans)
     $(".js-pager").on("click", function() {
       if (numberOfPastPlans === 0) {
         $("#myModal").modal('hide');
@@ -46,5 +51,5 @@ $(function() {
       }
     });
   });
-  
+
 });
