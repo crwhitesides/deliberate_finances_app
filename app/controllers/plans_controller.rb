@@ -9,7 +9,7 @@ class PlansController < ApplicationController
   def show
     @purchases_pending = @plan.purchases_pending
     @purchases_paid = @plan.purchases_paid_for
-    @purchase = @plan.purchases.build price: 0
+    @purchase = Purchase.new(plan_id: @plan.id)
     respond_to do |format|
       format.html { render :show }
       format.json { render json: @plan }
