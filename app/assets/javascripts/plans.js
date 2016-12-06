@@ -19,11 +19,8 @@ $(function() {
     return month[rawDate.getMonth()];
   }
 
-
-  $(".js-previous").on("click", function() {
-    var nextId = parseInt($(".js-previous").attr("data-id")) - 1;
-    var numberOfPastPlans = JSON.parse($(".js-pager").attr("data-past-plans")).length - 1;
-    $.get("/plans/" + nextId + ".json", function(data) {
+  function previousPlanInfo(id) {
+    $.get("/plans/" + id + ".json", function(data) {
       $(".modal-title").text(`In ${prettifyMonth(data["date"])} you budgeted...`);
 
       var purchases = data["purchases"];
@@ -33,22 +30,21 @@ $(function() {
       });
       $(".modal-body").html(purchasesString);
     });
+  }
+
+  $(".js-previous").on("click", function() {
+    var nextId = parseInt($(".js-previous").attr("data-id")) - 1;
+    var numberOfPastPlans = JSON.parse($(".js-pager").attr("data-past-plans")).length - 1;
+    previousPlanInfo(nextId);
     $(".js-pager").on("click", function() {
       if (numberOfPastPlans === 0) {
         $("#myModal").modal('hide');
       } else {
         numberOfPastPlans--;
         nextId--;
-        $.get("/plans/" + nextId + ".json", function(data) {
-          $(".modal-title").text(`In ${prettifyMonth(data["date"])} you budgeted...`);
-          var purchases = data["purchases"];
-          var purchasesString = "";
-          $.each(purchases, function(i, purchase) {
-            purchasesString += `<p data-paymentid="${purchase["id"]}">` + "$" + `${purchase["price"]} ` + "for " + `${purchase["item"]} ` + "</p>";
-          });
-          $(".modal-body").html(purchasesString);
-        });
+        previousPlanInfo(nextId);
       }
     });
   });
+  
 });
