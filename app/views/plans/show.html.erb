@@ -4,29 +4,10 @@
   <small><%= link_to "Edit income", edit_plan_path %></small>
 </div>
 
-<!-- Button trigger modal -->
+<!-- Button trigger modal: Previous plans -->
 <button type="button" class="btn btn-default js-previous" data-toggle="modal" data-target="#myModal" data-id="<%= @plan.id %>">
   Previous plans
 </button>
-
-<!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel"></h4>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary js-pager" data-id="<%= @plan.id %>" data-past-plans="<%= ids_of_past_plans(@plan.id) %>">Previous</button>
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
 
 <div class="center button">
   <%= link_to "Add purchase to plan", new_plan_purchase_path(@plan), class: "btn btn-primary" %>
@@ -47,5 +28,25 @@
         <%= render @purchases_paid %>
       </ol>
     <% end %>
+  </div>
+</div>
+
+
+<!-- Modal: Previous plans -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel"></h4>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary js-pager" data-id="<%= @plan.id %>" data-past-plans="<%= ids_of_past_plans(@plan.id) %>">Previous</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
   </div>
 </div>
