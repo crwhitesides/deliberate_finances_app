@@ -22,9 +22,8 @@ $(function() {
 
   $(".js-previous").on("click", function() {
     var nextId = parseInt($(".js-previous").attr("data-id")) - 1;
-    var numberOfPastPlans = parseInt($(".js-pager").attr("data-count")) - 1;
+    var numberOfPastPlans = JSON.parse($(".js-pager").attr("data-past-plans")).length - 1;
     $.get("/plans/" + nextId + ".json", function(data) {
-      console.log(data)
       $(".modal-title").text(`In ${prettifyMonth(data["date"])} you budgeted...`);
 
       var purchases = data["purchases"];
