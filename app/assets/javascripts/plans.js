@@ -54,8 +54,9 @@ $(function() {
 
   // Submit Purchases via AJAX
   $("#new_purchase").on("submit", function(e) {
-    var url = this.action
-    var data = $(this).serialize();
+    var $form = $(this);
+    var url = $form.attr("action");
+    var data = $form.serialize();
 
     $.ajax({
       method: this.method,
