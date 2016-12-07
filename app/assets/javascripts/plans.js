@@ -4,8 +4,10 @@ function Purchase(attributes) {
   this.id = attributes.id;
 }
 
-Purchase.templateSource = $("#purchase-template").html();
-Purchase.template = var template = Handlebars.compile(Item.templateSource);
+$(function() {
+  Purchase.templateSource = $("#purchase-template").html();
+  Purchase.template = Handlebars.compile(Purchase.templateSource);
+});
 
 $(function() {
   // Accessing prior months' purchase details via AJAX (using modal)
