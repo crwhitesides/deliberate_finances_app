@@ -9,6 +9,10 @@ $(function() {
   Purchase.template = Handlebars.compile(Purchase.templateSource);
 });
 
+Purchase.prototype.renderLi = function() {
+  return Purchase.template(this)
+}
+
 $(function() {
   // Accessing prior months' purchase details via AJAX (using modal)
   $('#myModal').on('hidden.bs.modal', function () {
@@ -81,8 +85,6 @@ $(function() {
         var purchaseLi = purchase.renderLi();
 
         $("ol.unpaid").append(purchaseLi);
-
-        // $("ol.unpaid").append(`<li><span class="content"><h3><strong> $${response.price} </strong>` + "for " + `${response.item}` + "</h3></span></li>")
       }
     });
     e.preventDefault();
