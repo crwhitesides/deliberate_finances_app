@@ -62,6 +62,7 @@ $(function() {
       method: $form.attr("method"),
       url: url,
       data: data,
+      dataType: "json",
       success: function(response) {
         console.log(response)
         $(".form-control").val("");
