@@ -36,6 +36,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'bootstrap-sass', '3.3.6'
 gem 'omniauth-twitter'
 gem "omniauth-google-oauth2", "~> 0.2.1"
+# How to solve therubyracer issue that impedes successfull installation of handlebars: # https://github.com/cowboyd/therubyracer/issues/398#issuecomment-177039290
 gem 'handlebars', '~> 0.7.0'
 
 group :development, :test do
