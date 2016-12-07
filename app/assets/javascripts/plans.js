@@ -1,5 +1,5 @@
 $(function() {
-
+  // Accessing prior months' purchase details via AJAX (using modal)
   $('#myModal').on('hidden.bs.modal', function () {
     location.reload();
   });
@@ -50,6 +50,24 @@ $(function() {
         previousPlanInfo(nextId);
       }
     });
+  });
+
+  // Submit Purchases via AJAX
+  $("#new_purchase").on("submit", function(e) {
+    var url = this.action
+    var data = $(this).serialize();
+
+    $.ajax({
+      method: this.method,
+      url: url,
+      data: data,
+      success: function(response) {
+        console.log(response)
+        $(".form-control").val("");
+        $("ol.unpaid").append(`<li><span class="content"><h3><strong> $${response.price} </strong>` + "for " + `${response.item}` + "</h3></span></li>")
+      }
+    });
+    e.preventDefault();
   });
 
 });

@@ -28,8 +28,9 @@ class PurchasesController < ApplicationController
   def create
     @purchase = Purchase.new(purchase_params)
     if @purchase.save
-      flash[:success] = "Purchase added successfully."
-      redirect_to current_user.current_plan
+      # flash[:success] = "Purchase added successfully."
+      render json: @purchase, status: 201
+      # redirect_to current_user.current_plan
     else
       render 'new'
     end

@@ -5,9 +5,11 @@
 </div>
 
 <!-- Button trigger modal: Previous plans -->
-<button type="button" class="btn btn-default js-previous" data-toggle="modal" data-target="#myModal" data-id="<%= @plan.id %>">
-  Previous plans
-</button>
+<div class="center button">
+  <button type="button" class="btn btn-default js-previous" data-toggle="modal" data-target="#myModal" data-id="<%= @plan.id %>">
+    Previous plans
+  </button>
+</div><br>
 
 <!-- <div class="center button">
   <%#= link_to "Add purchase to plan", new_plan_purchase_path(@plan), class: "btn btn-primary" %>
@@ -17,7 +19,7 @@
   <div class="col-md-6 col-md-offset-3">
     <% if @plan.purchases_pending.any? %>
       <h3>Your planned purchases include...</h3>
-      <ol class="items">
+      <ol class="items unpaid">
         <%= render @purchases_pending %>
       </ol>
     <% end %>
@@ -34,6 +36,7 @@
 
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
+    <h3>Add item to plan</h3><br>
     <%= form_for [@plan, @purchase] do |f| %>
       <%= render 'shared/error_messages', object: f.object %>
 
