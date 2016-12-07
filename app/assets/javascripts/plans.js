@@ -1,17 +1,32 @@
-function Purchase(attributes) {
-  this.price = attributes.price;
-  this.item = attributes.item;
-  this.id = attributes.id;
+// Add method to protype to render Purchase objects
+// function Purchase(attributes) {
+//   this.price = attributes.price;
+//   this.item = attributes.item;
+//   this.id = attributes.id;
+// }
+
+// Purchase.prototype.renderLi = function() {
+//   return Purchase.template(this)
+// }
+
+// Using ES6 Classes to render Purchase objects
+class Purchase {
+  constructor(attributes) {
+    this.price = attributes.price;
+    this.item = attributes.item;
+    this.id = attributes.id;
+  }
+
+  renderLi() {
+    return Purchase.template(this)
+  }
 }
+
 
 $(function() {
   Purchase.templateSource = $("#purchase-template").html();
   Purchase.template = Handlebars.compile(Purchase.templateSource);
 });
-
-Purchase.prototype.renderLi = function() {
-  return Purchase.template(this)
-}
 
 $(function() {
   // Accessing prior months' purchase details via AJAX (using modal)
