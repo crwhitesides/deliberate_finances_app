@@ -9,7 +9,8 @@
   <h1>Past plans</h1>
   <ul>
     <% @past_plans.each do |plan| %>
-      <li><%= link_to date_of(plan), plan %></li>
+      <li><%= link_to date_of(plan), plan, method: :get %></li>
+      <!-- Use of `method: :get` to ensure page reloads: http://stackoverflow.com/a/35948849/1454968 -->
     <% end %>
   </ul>
 <% end %>
