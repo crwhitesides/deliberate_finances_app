@@ -59,7 +59,7 @@ $(function() {
     var data = $form.serialize();
 
     $.ajax({
-      method: this.method,
+      method: $form.attr("method"),
       url: url,
       data: data,
       success: function(response) {
