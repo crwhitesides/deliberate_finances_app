@@ -34,7 +34,7 @@ class PurchasesController < ApplicationController
         f.json { render json: @purchase, status: 201 }
       end
     else
-      render 'new'
+      render json: { errors: @purchase.errors.full_messages }
     end
   end
 

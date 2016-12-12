@@ -83,6 +83,7 @@ $(function() {
 
   // Submit Purchases via AJAX
   $("#new_purchase").on("submit", function(e) {
+    e.preventDefault();
     var $form = $(this);
     var url = $form.attr("action");
     var data = $form.serialize();
@@ -93,15 +94,19 @@ $(function() {
       data: data,
       dataType: "json",
       success: function(response) {
-        $(".form-control").val("");
+        if (!!response.errors) {
+          $.map(response.errors, function(error) {
+            $(".error").append(error)
+          })
+        }
 
+        $(".form-control").val("")
         var purchase = new Purchase(response);
         var purchaseLi = purchase.renderLi();
-
         $("ol.unpaid").append(purchaseLi);
       }
     });
-    e.preventDefault();
+
   });
 
 });
