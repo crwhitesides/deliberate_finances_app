@@ -44,13 +44,13 @@
 
       <div class="form-group">
         <%= f.label :item %>
-        <%= f.text_field :item, placeholder: " Stinky cheese", class: 'form-control' %>
+        <%= f.text_field :item, placeholder: " Stinky cheese", class: 'form-control', required: true %>
       </div>
 
       <%= f.label :price %>
       <div class="input-group">
         <div class="input-group-addon">$</div>
-        <%= f.text_field :price, placeholder: "6.78", class: 'form-control' %>
+        <%= f.text_field :price, placeholder: "6.78", class: 'form-control', required: true %>
       </div><br>
 
       <div class="form-group">
