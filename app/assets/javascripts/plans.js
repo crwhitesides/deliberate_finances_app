@@ -94,11 +94,11 @@ $(function() {
       data: data,
       dataType: "json",
       success: function(response) {
-        if (!!response.errors) {
-          $.map(response.errors, function(error) {
-            $(".error").append(error)
-          })
-        }
+        // if (!!response.errors) {
+        //   $.map(response.errors, function(error) {
+        //     $(".error").append(error)
+        //   })
+        // }
 
         $(".form-control").val("")
         var purchase = new Purchase(response);
